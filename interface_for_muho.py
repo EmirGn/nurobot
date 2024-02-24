@@ -1,10 +1,7 @@
 import streamlit as st
-import openai
 from main_script import rag_chain
 
 st.title("NuroBot")
-
-openai.api_key = st.secrets["OPENAI_API_KEY"]
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
