@@ -8,6 +8,13 @@ from langchain_openai import OpenAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain_community.callbacks import get_openai_callback
 import os
+import subprocess
+import sys
+
+def install(name):
+    subprocess.call([sys.executable, '-m', 'pip', 'install', name])
+
+install("faiss-cpu")
 
 with st.sidebar:
     st.title("PDF At Sor")
