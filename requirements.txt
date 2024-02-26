@@ -8,3 +8,4 @@ Requests
 streamlit
 toml
 pypdf
+faiss-cpu
