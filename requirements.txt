@@ -7,3 +7,4 @@ PyPDF2
 Requests
 streamlit
 toml
+pypdf
