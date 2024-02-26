@@ -1,9 +1,5 @@
-__import__("pysqlite3")
-import sys
 import streamlit as st
 import main_script
-
-sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
 
 st.set_page_config(
     page_title = "NuroBot",
