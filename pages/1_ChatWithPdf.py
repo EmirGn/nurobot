@@ -1,6 +1,5 @@
 import streamlit as st
 from PyPDF2 import PdfReader
-from streamlit_extras.add_vertical_space import add_vertical_space
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
@@ -17,7 +16,6 @@ with st.sidebar:
     - [Streamlit](https://streamlit.io/)
     - [LangChain](https://python.langchain.com/)
     - [OpenAI](https://platform.openai.com/docs/models)""")
-    add_vertical_space(24)
     st.write("Made by emirg")
 
 def main():
