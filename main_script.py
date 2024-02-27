@@ -8,7 +8,7 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.schema.output_parser import StrOutputParser
 
 gpt_models = ["gpt-4-1106-preview", "gpt-3.5-turbo"]
-llm = ChatOpenAI(model_name = gpt_models[1], openai_api_key = OPENAI_API_KEY)
+llm = ChatOpenAI(model_name = gpt_models[0], openai_api_key = OPENAI_API_KEY)
 
 template = """ Soruları contexte göre cevapla. {context}
 YAPMAN GEREKENLER:
