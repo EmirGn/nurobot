@@ -1,7 +1,5 @@
-# %%
 from preprocessing import *
 
-# %%
 from langchain.chat_models import ChatOpenAI
 from langchain_core.runnables import RunnablePassthrough
 from langchain.prompts import ChatPromptTemplate
@@ -25,17 +23,9 @@ Question: {question}
 vectordb = load_chunk_persist_pdf()
 prompt = ChatPromptTemplate.from_template(template)
 retriever = vectordb.as_retriever()
-# %%
 rag_chain = (
     {"context": retriever, "question": RunnablePassthrough()}
     | prompt
     | llm
     | StrOutputParser()
 )
-# %% [markdown]
-# #**INTERFACE**
-
-# %% [markdown]
-# 
-
-

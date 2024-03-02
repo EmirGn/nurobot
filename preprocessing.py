@@ -1,36 +1,19 @@
-# %%
-import os
-import toml
-
-# %%
-import requests
-
-if os.path.exists("/Users/emirg/Nodes/muhammed/datasets/teknofest_scheme.pdf"):
-    print("The target file exists in the directory.")
-else:
-    url = "https://cdn.teknofest.org/media/upload/userFormUpload/TEKNOFEST_2024_Roket_Yar%C4%B1smas%C4%B1_Sartnamesi_Ver2.4_NltT9.pdf"
-    name = "teknofest_scheme"
-    response = requests.get(url)
-    with open(name, "w") as f:
-        f.write(response.text)
-
-# %%
-with open("./.streamlit/secrets.toml", "r") as f:
-    config = toml.load(f)
-
-OPENAI_API_KEY = config.get("OPENAI_API_KEY")
-if OPENAI_API_KEY:
-    print("Your API Key is available")
-else:
-    print("API key not found")
-
-# %%
 from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.question_answering import load_qa_chain
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 import chromadb
+import os
+import toml
+
+def ApiKeyConf(secret_path, api_name):
+    with open(secret_path, "r") as f:
+        config = toml.load(f)
+
+    return config.get(api_name) if config else print("{api_name} not found.")
+
+OPENAI_API_KEY = ApiKeyConf("./.streamlit/secrets.toml", "OPENAI_API_KEY")
 
 dataset_file = "./datasets"
 documents = []
