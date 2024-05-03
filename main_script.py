@@ -1,22 +1,17 @@
 from preprocessing import *
 
-from langchain.chat_models import ChatOpenAI
+from langchain_groq import ChatGroq
 from langchain_core.runnables import RunnablePassthrough
 from langchain.prompts import ChatPromptTemplate
 from langchain.schema.output_parser import StrOutputParser
 
 gpt_models = ["gpt-4-1106-preview", "gpt-3.5-turbo"]
-llm = ChatOpenAI(model_name = gpt_models[0], openai_api_key = OPENAI_API_KEY)
+llm = ChatGroq(model_name = "llama3-70b-8192", groq_api_key = GROQ_API_KEY)
 
 template = """ Soruları contexte göre cevapla. {context}
 YAPMAN GEREKENLER:
--Sana verilen promptda herhangi bir flag yoksa "-free, -matematik" cevabını sadece raporlar göre ver.
-Eğer raporlarda cevap yoksa cevabı bulamadığın söyle.
--Sana verilen promptda -free işaretini görürsen normal bir chatbot gibi davran ve raporlardan bağımsız cevap ver.
-Cevabını detaylı bir şekilde ver.
--Sana verilen promptda -matematik işaretini görürsen kullanıcıya matematiksel işlemlerde yardım et ve gerektiğinde rapordan bağımsız cevap ver.
--Cevaplarını detaylı vermek ZORUNDASIN.
--Flag/işaret almadıkça raporlara bağlı kalıp cevap vermek zorundasın.
+-Soruları contexte göre cevaplamak.
+-Eğer promptun sonunda "-free" yazıyorsa normal bir chatbot gibi davran bütün sorular
 Question: {question}
 """
 

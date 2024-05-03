@@ -2,9 +2,7 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.question_answering import load_qa_chain
 from langchain_community.vectorstores import Chroma
-from langchain_openai import OpenAIEmbeddings
 from langchain_community.embeddings import CohereEmbeddings
-import chromadb
 import os
 import toml
 
@@ -14,7 +12,7 @@ def ApiKeyConf(secret_path, api_name):
 
     return config.get(api_name), config.get("COHERE_API_KEY")
 
-OPENAI_API_KEY, COHERE_API_KEY = ApiKeyConf("./.streamlit/secrets.toml", "OPENAI_API_KEY")
+GROQ_API_KEY, COHERE_API_KEY = ApiKeyConf("./.streamlit/secrets.toml", "GROQ_API_KEY")
 
 dataset_file = "./datasets"
 documents = []
